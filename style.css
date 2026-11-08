@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* بنستخدم flex-start مع مسافة من فوق عشان نرفع محتوى الكارت والصورة لفوق شوية */
+    align-items: flex-start; 
+    padding-top: 6vh;
+
+    /* إظهار الصورة بالكامل بدون قص */
+    background-image: url("IMG_5679.jpg");
+    background-size: contain;
+    background-position: center top; /* بنثبت تركيز الصورة من فوق عشان الرأس والوجه يبانوا بوضوح */
+    background-repeat: no-repeat;
+    background-color: #111;
+
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* طبقة شفافة خفيفة جداً */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+}
+
+.love-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+
+    padding: 25px 20px;
+    text-align: center;
+    color: white;
+
+    /* خلفية شفافة أكتر وبلور أنيق */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #ffb6c9;
+    margin-bottom: 15px;
+    font-size: 26px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.sentence {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 12px 0;
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.heart {
+    font-size: 30px;
+    margin-top: 12px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* للموبايل والشاشات الصغيرة */
+@media (max-width: 480px) {
+    body {
+        padding-top: 4vh;
+    }
+
+    .love-card {
+        padding: 18px 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .sentence {
+        font-size: 15px;
+    }
+}
